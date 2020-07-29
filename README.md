@@ -3,6 +3,7 @@
   Input : url of khanacademy Curriculum, Branches or Units 
   
   Output : Length and duration 
-    590-Vedio
-    25h 25 min
-    average of vedio is : 10 mins
+  example : 
+    length    : 590 Vedio
+    duration  : 25h 25 min
+    video avg : 10 mins
