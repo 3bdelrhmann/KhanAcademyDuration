@@ -1,6 +1,8 @@
 # KhanAcademy length and duration Curriculum, Branches and Units
   
-  Input : url of khanacademy Curriculum, Branches or Units 
+  Input :
+  
+    url of khanacademy Curriculum, Branches or Units 
   
   Output : Length and duration 
   
