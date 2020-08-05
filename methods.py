@@ -47,14 +47,16 @@ class Main():
         branches = self.page_content.find_all(attrs={self.BRANCH_HEADER_ATTR:self.BRANCH_HEADER_VAL},href=True)
         units    = self.page_content.find_all(attrs={self.UNIT_HEADER_ATTR:self.UNIT_HEADER_VAL},href=True)
 
-        self.branches_len = len(branches)
+        self.branches_len   = len(branches)
+        self.brances_titles = []
         self.units_len    = len(units)
+        self.units_titles = [unit.get_text() for unit in units]
         self.units_links  = [link['href'] for link in units]
-        
-        for branche in branches:
-            print(branche)
-        
 
+        for branche in branches:
+            for title in branche.contents:
+                self.brances_titles.append(title.get_text())
+        
     def count_units_and_branches(self):
         pass
 
@@ -63,3 +65,5 @@ class Main():
 
 obj = Main('https://www.khanacademy.org/math/high-school-math/')
 obj.count_branches()
+print(obj.brances_titles)
+print(obj.units_titles)
