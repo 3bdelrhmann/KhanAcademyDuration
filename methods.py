@@ -19,6 +19,9 @@ class Main():
 
     LESSON_TITLE_CLASS = 'div[data-test-id="lesson-card"] ._14hvi6g8'
 
+    LESSON_LENGTH_ATTR = 'data-test-id'
+    LESSON_LENGTH_VAL  = 'video-time-hidden'
+
     def __init__(self,link):
         self.link    = link
         
@@ -67,16 +70,21 @@ class Main():
         get_topics  = load_unit.select(self.LESSON_TITLE_CLASS)
         get_lessons = load_unit.find_all(attrs={self.TOPIC_HEADER_ATTR:self.TOPIC_HEADER_VAL})
 
-        self.topics_titles = [ topic.get_text() for topic in get_topics ]
+        self.topics_titles  = [ topic.get_text() for topic in get_topics ]
         self.lessons_titles = [ lesson.get_text() for lesson in get_lessons ]
+        self.total_lessons  = len(get_lessons)
         
-    def count_units_and_branches(self):
-        pass
-
+    def lesson_length(self,lesson_link):
+        load_lesson_page = self.load_webpage(lesson_link)
+        get_length     = load_lesson_page.find(attrs={self.LESSON_LENGTH_ATTR:self.LESSON_LENGTH_VAL})
+        total_duration = get_length.get_text() # <span class="sr-only" data-test-id="video-time-hidden">Current time:<!-- -->0:00<!-- -->Total duration:<!-- -->7:18</span>
+        duration    = 'duration:' # for explaination these step loop on the upper comment
+        position    = total_duration.find(duration) + len(duration) # + len(duration) to clean the result from "duration:"
+        
+        return total_duration[position:] 
     def count_units(self):
         pass
 
-obj = Main('https://www.khanacademy.org/math/high-school-math/')
-obj.count_topics('https://www.khanacademy.org/math/high-school-math/math1/x89d82521517266d4:algebra-foundation')
-print(obj.topics_titles)
-print(obj.lessons_titles)
+obj    = Main('https://www.khanacademy.org/math/high-school-math/')
+lesson_length = obj.lesson_length('https://www.khanacademy.org/math/high-school-math/math1/x89d82521517266d4:algebra-foundation/x89d82521517266d4:overview-history-alg/v/origins-of-algebra')
+print(lesson_length)

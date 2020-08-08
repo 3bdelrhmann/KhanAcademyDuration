@@ -1,0 +1,23 @@
+[INFO  - 2020-08-08T01:39:18.143Z] GhostDriver - Main - running on port 50520
+[INFO  - 2020-08-08T01:39:19.752Z] Session [fa722040-d917-11ea-a96b-516ecc41cd8f] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2020-08-08T01:39:19.752Z] Session [fa722040-d917-11ea-a96b-516ecc41cd8f] - page.customHeaders:  - {}
+[INFO  - 2020-08-08T01:39:19.752Z] Session [fa722040-d917-11ea-a96b-516ecc41cd8f] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2020-08-08T01:39:19.752Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: fa722040-d917-11ea-a96b-516ecc41cd8f
+[ERROR - 2020-08-08T01:39:24.172Z] Session [fa722040-d917-11ea-a96b-516ecc41cd8f] - page.onError - msg: TypeError: undefined is not a constructor (evaluating 'l(r)[Symbol.iterator]()')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2020-08-08T01:39:24.172Z] Session [fa722040-d917-11ea-a96b-516ecc41cd8f] - page.onError - stack:
+  e (https://cdn.kastatic.org/genwebpack/prod/en/shared.d1531795cdbeb865738b.js:1)
+  e (https://cdn.kastatic.org/genwebpack/prod/en/shared.d1531795cdbeb865738b.js:1)
+  e (https://cdn.kastatic.org/genwebpack/prod/en/shared.d1531795cdbeb865738b.js:1)
+  kaLocale (https://cdn.kastatic.org/genwebpack/prod/en/shared.d1531795cdbeb865738b.js:1)
+  dtmb (https://cdn.kastatic.org/genwebpack/prod/en/shared.d1531795cdbeb865738b.js:1)
+  p (https://cdn.kastatic.org/genwebpack/prod/en/runtime.2a4cb3b22a62977f3f18.js:1)
+  jn9D (https://cdn.kastatic.org/genwebpack/prod/en/shared.d1531795cdbeb865738b.js:1)
+  p (https://cdn.kastatic.org/genwebpack/prod/en/runtime.2a4cb3b22a62977f3f18.js:1)
+  PI4z (https://cdn.kastatic.org/genwebpack/prod/en/javascript/app-shell-package/app-entry.ca969462696100a38d80.js:1)
+  p (https://cdn.kastatic.org/genwebpack/prod/en/runtime.2a4cb3b22a62977f3f18.js:1)
+  o (https://cdn.kastatic.org/genwebpack/prod/en/runtime.2a4cb3b22a62977f3f18.js:1)
+  e (https://cdn.kastatic.org/genwebpack/prod/en/runtime.2a4cb3b22a62977f3f18.js:1)
+
+  phantomjs://platform/console++.js:263 in error
