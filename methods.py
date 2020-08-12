@@ -7,6 +7,7 @@ class Main():
     BRANCH       = 'BRANCH'
     UNIT         = 'UNIT'
     TOPIC        = 'TOPIC'
+    LESSON       = 'LESSON'
     
     BRANCH_TITLE_ATTR  = 'data-test-id'
     BRANCH_TITLE_VAL   = 'unit-header'
@@ -23,6 +24,18 @@ class Main():
     LESSON_LENGTH_ATTR = 'data-test-id'
     LESSON_LENGTH_VAL  = 'video-time-hidden'
 
+
+    CURRIUCULUM_PAGE_SIGNATURE_1 = '[data-slug="table-of-contents"]' # return True
+    CURRIUCULUM_PAGE_SIGNATURE_2 = '._b6nl2n' # return True
+    LESSON_PAGE_SIGNATURE = '[data-test-id="tutorial-page"]'
+    BRANCH_PAGE_SIGNATURE = '[data-position-slug="subject-challenge"]'
+    UNIT_PAGE_SIGNATURE   = '[data-test-id="unit-points-available-label"]'
+    
+    
+    
+    
+
+
     def __init__(self,link):
         self.link    = link
         
@@ -35,15 +48,17 @@ class Main():
         """
             Determine web page is 
         """
-        load_page = self.load_webpage(link)
-        result   = self.CURRICULUM
-        
-        if self.BRANCHES_UNITS_CLASS not in web_page:
+        load_page = self.load_webpage(self.link)
+        if load_page.select(self.CURRIUCULUM_PAGE_SIGNATURE_1) and load_page.select(self.CURRIUCULUM_PAGE_SIGNATURE_2):
+            return self.CURRICULUM
+        if load_page.select(self.LESSON_PAGE_SIGNATURE):
+            return self.LESSON
+        if load_page.select(self.BRANCH_PAGE_SIGNATURE):
+            return self.BRANCH
+        if load_page.select(self.UNIT_PAGE_SIGNATURE):
             return self.UNIT
-        
-        if self.BRANCH_CLASS in web_page:
-            result = self.BRANCH
-        return result
+
+        return "cann't determine page"
 
 
     def is_curriculm(self):
@@ -101,9 +116,7 @@ class Main():
         load_lesson_page = self.load_webpage(lesson_link)
         get_length     = load_lesson_page.find(attrs={self.LESSON_LENGTH_ATTR:self.LESSON_LENGTH_VAL})
         total_duration = get_length.get_text() # <span class="sr-only" data-test-id="video-time-hidden">Current time:<!-- -->0:00<!-- -->Total duration:<!-- -->7:18</span>
-        duration    = 'duration:' # for explaination these step loop on the upper comment
+        duration    = 'duration:' # for explaination these step loo on the upper comment
         position    = total_duration.find(duration) + len(duration) # + len(duration) to clean the result from "duration:"
         
         return total_duration[position:] 
-
-obj    = Main('https://www.khanacademy.org/math/high-school-math/')
